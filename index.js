@@ -1,13 +1,15 @@
-import express from "express" // new js
 
 const express = require("express") // old js
-
 
 const app = express()
 const port = 3000
 
+const students = require("./students.json")
 app.get("/", (req, res) => {
 	res.json({ msg: "Hello World!" })
+})
+app.get("/students", (req, res) => {
+	res.json(students)
 })
 
 app.listen(port, () => {
