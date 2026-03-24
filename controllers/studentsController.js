@@ -21,11 +21,11 @@ function createStudent(req, res) {
 }
 
 function updateStudent(req, res) {
-  res.json({ message: "Student updated" });
+  res.status(200).json({ message: "Student updated" });
 }
 
 function deleteStudent(req, res) {
-  res.json({ message: "Student deleted" });
+  res.status(200).json({ message: "Student deleted" });
 }
 
 module.exports = {

@@ -4,41 +4,16 @@ const cors = require("cors");
 const app = express();
 const port = 3000;
 
+const studentRoutes = require("./routes/students");
+
 app.use(cors());
 app.use(express.json());
-
-const students = require("./students.json");
 
 app.get("/", (req, res) => {
   res.json({ msg: "Hello World!" });
 });
 
-app.get("/students", (req, res) => {
-  res.json(students);
-});
-
-app.get("/students/:id", (req, res) => {
-  const id = parseInt(req.params.id);
-  const student = students.find((s) => s.id === id);
-
-  if (!student) {
-    return res.status(404).json({ error: "Student not found" });
-  }
-
-  res.json(student);
-});
-
-app.post("/students", (req, res) => {
-  res.status(201).json({ message: "Student created" });
-});
-
-app.put("/students/:id", (req, res) => {
-  res.status(200).json({ message: "Student updated" });
-});
-
-app.delete("/students/:id", (req, res) => {
-  res.status(200).json({ message: "Student deleted" });
-});
+app.use("/students", studentRoutes);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
