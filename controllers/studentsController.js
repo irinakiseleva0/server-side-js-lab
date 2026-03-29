@@ -6,8 +6,7 @@ function getStudents(req, res) {
 }
 
 function getStudent(req, res) {
-  const id = parseInt(req.params.id);
-  const student = service.getStudentById(id);
+  const student = service.getStudentById(req.params.id);
 
   if (!student) {
     return res.status(404).json({ error: "Student not found" });

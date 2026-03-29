@@ -5,7 +5,7 @@ function getAllStudents() {
 }
 
 function getStudentById(id) {
-  return students.find((s) => s.id === id);
+  return students.find((s) => s.id === Number(id));
 }
 
 module.exports = {
