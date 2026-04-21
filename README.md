@@ -160,5 +160,3 @@ Use Postman to test all endpoints.
 
 ## 👩‍💻 Author
 Irina Kiseleva
-
-Irina Kiseleva
