@@ -7,7 +7,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const studentRoutes = require("./routes/students");
-const courseRoutes = require("./routes/courseRoute");
+const courseRoutes = require("./BACK/routes/courseRoute");
 
 app.use(cors());
 app.use(express.json());
