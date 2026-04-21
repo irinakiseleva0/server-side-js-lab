@@ -177,7 +177,33 @@ If the token is missing:
 * 404 Not Found – Resource not found
 
 ---
+## 📬 API Testing (Postman)
 
+### ✅ Create Course
+![Create](screenshots/final1_post.jpg)
+
+### ✅ Get All Courses
+![Get All](screenshots/final2_GET_ALL.jpg)
+
+### ✅ Get Course by ID
+![Get by ID](screenshots/final3_id.jpg)
+
+### ✅ Update Course
+![Update](screenshots/final4_put.jpg)
+
+### ✅ Delete Course
+![Delete](screenshots/final5_delete.jpg)
+
+### 🔒 Unauthorized (no token)
+![Unauthorized](screenshots/final6_without_token.jpg)
+## ✅ Checklist
+
+- [x] POST /api/course — create entries
+- [x] GET /api/course — get all
+- [x] GET /api/course/:id — get by ID
+- [x] PUT /api/course/:id — update
+- [x] DELETE /api/course/:id — delete
+- [x] GET without token — returns 401
 ## 📬 Testing
 
 All endpoints were tested using Postman.
