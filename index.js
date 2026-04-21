@@ -6,7 +6,6 @@ require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-const studentRoutes = require("./routes/students");
 const courseRoutes = require("./BACK/routes/courseRoute");
 
 app.use(cors());
@@ -16,7 +15,6 @@ app.get("/", (req, res) => {
   res.json({ msg: "API is running" });
 });
 
-app.use("/students", studentRoutes);
 app.use("/api/course", courseRoutes);
 
 mongoose

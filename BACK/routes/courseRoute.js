@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const courseController = require("../controllers/courseController");
-const authCheck = require("../middleware/auth-middleware");
+const authCheck = require("../../middleware/auth-middleware");
 
 router.get("/", authCheck, courseController.getAll);
 router.get("/:id", authCheck, courseController.getById);

@@ -1,5 +1,4 @@
 const courseService = require("../services/courseService");
-
 // GET all
 async function getAll(req, res) {
   try {

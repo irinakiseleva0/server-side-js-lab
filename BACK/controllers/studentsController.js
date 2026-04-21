@@ -16,7 +16,8 @@ function getStudent(req, res) {
 }
 
 function createStudent(req, res) {
-  res.status(201).json({ message: "Student created" });
+  const newStudent = service.createStudent(req.body);
+  res.status(201).json(newStudent);
 }
 
 function updateStudent(req, res) {
