@@ -1,9 +1,13 @@
-# Server-Side JavaScript Lab - Course API
+# Server-Side JavaScript Final Assessment – Course API
 
 ## 📌 Overview
 
-This project is a RESTful API built with Node.js, Express, and MongoDB (Atlas).
-It provides full CRUD functionality for managing courses in a database.
+This project is a RESTful API built with Node.js, Express, and MongoDB Atlas.
+It extends the existing Student Management API by adding a new resource: **Course**.
+
+The API provides full CRUD functionality and uses middleware to protect all routes.
+
+---
 
 ## 🚀 Features
 
@@ -14,6 +18,8 @@ It provides full CRUD functionality for managing courses in a database.
 * Delete a course
 * Protected routes using authentication middleware
 
+---
+
 ## 🛠️ Technologies Used
 
 * Node.js
@@ -22,52 +28,64 @@ It provides full CRUD functionality for managing courses in a database.
 * Mongoose
 * dotenv
 
+---
+
 ## 📂 Project Structure
 
-```
+```plaintext
 project-root/
 │
-├── controllers/
-│   └── courseController.js
-├── middleware/
-│   └── auth-middleware.js
-├── models/
-│   └── courseModel.js
+├── BACK/
+│   ├── models/
+│   │   └── courseModel.js
+│   ├── services/
+│   │   └── courseService.js
+│   ├── controllers/
+│   │   └── courseController.js
+│   ├── routes/
+│   │   └── courseRoute.js
+│   ├── middleware/
+│   │   └── auth-middleware.js
+│
 ├── routes/
-│   └── courseRoute.js
+│   └── students.js
+├── controllers/
 ├── services/
-│   └── courseService.js
 ├── index.js
 ├── .env
 ├── package.json
 ```
 
+---
+
 ## ⚙️ Environment Variables
 
 Create a `.env` file in the root directory:
 
-```
+```env
 MONGO_URI=your_mongodb_connection_string
 PORT=3000
 ```
+
+---
 
 ## ▶️ Run the Project
 
 Install dependencies:
 
-```
+```bash
 npm install
 ```
 
 Start development server:
 
-```
+```bash
 npm run dev
 ```
 
-Server will run on:
+Server runs on:
 
-```
+```bash
 http://localhost:3000
 ```
 
@@ -77,31 +95,33 @@ http://localhost:3000
 
 ### Base URL:
 
-```
+```bash
 http://localhost:3000/api/course
 ```
 
+---
+
 ### 🔹 Get all courses
 
-```
+```http
 GET /
 ```
 
 ### 🔹 Get course by ID
 
-```
+```http
 GET /:id
 ```
 
 ### 🔹 Create course
 
-```
+```http
 POST /
 ```
 
-Body (JSON):
+**Body (JSON):**
 
-```
+```json
 {
   "title": "Backend Development",
   "description": "Node.js course",
@@ -110,15 +130,19 @@ Body (JSON):
 }
 ```
 
+---
+
 ### 🔹 Update course
 
-```
+```http
 PUT /:id
 ```
 
+---
+
 ### 🔹 Delete course
 
-```
+```http
 DELETE /:id
 ```
 
@@ -126,18 +150,20 @@ DELETE /:id
 
 ## 🔐 Authentication
 
-All routes are protected by a simple authentication middleware.
+All routes are protected by a custom authentication middleware.
 
-Add header in requests:
+Add this header to all requests:
 
-```
+```http
 Authorization: Bearer test123
 ```
 
-If the token is missing or incorrect:
+If the token is missing:
 
-```
-401 Unauthorized
+```json
+{
+  "message": "Unauthorized"
+}
 ```
 
 ---
@@ -146,7 +172,7 @@ If the token is missing or incorrect:
 
 * 200 OK – Successful request
 * 201 Created – Resource created
-* 400 Bad Request – Invalid data
+* 400 Bad Request – Invalid input
 * 401 Unauthorized – Missing/invalid token
 * 404 Not Found – Resource not found
 
@@ -154,9 +180,10 @@ If the token is missing or incorrect:
 
 ## 📬 Testing
 
-Use Postman to test all endpoints.
+All endpoints were tested using Postman.
 
 ---
 
 ## 👩‍💻 Author
+
 Irina Kiseleva
