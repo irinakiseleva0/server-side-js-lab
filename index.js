@@ -1,24 +1,35 @@
 const express = require("express");
 const cors = require("cors");
+const mongoose = require("mongoose");
+require("dotenv").config();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const studentRoutes = require("./routes/students");
+const courseRoutes = require("./routes/courseRoute");
 
 app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.json({ msg: "Hello World!" });
+  res.json({ msg: "API is running" });
 });
 
 app.use("/students", studentRoutes);
+app.use("/api/course", courseRoutes);
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
-
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("MongoDB connected");
+    app.listen(port, () => {
+      console.log(`Server is running on port ${port}`);
+    });
+  })
+  .catch((error) => {
+    console.error("MongoDB connection error:", error.message);
+  });
 // NODEMON
 
 // send data to the exposed endpoints
