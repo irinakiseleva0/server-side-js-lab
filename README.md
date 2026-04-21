@@ -1,71 +1,164 @@
-# Exercise 01 — File System & JSON
+# Server-Side JavaScript Lab - Course API
 
-## Goal
+## 📌 Overview
 
-Read a JSON file, transform its data, and write the result to a Markdown file — all using Node.js built-in modules, no `npm install` needed.
+This project is a RESTful API built with Node.js, Express, and MongoDB (Atlas).
+It provides full CRUD functionality for managing courses in a database.
 
-## What you will build
+## 🚀 Features
 
-A script that reads `students.json` and generates a `student_report.md` file.
+* Create a new course
+* Get all courses
+* Get a course by ID
+* Update a course
+* Delete a course
+* Protected routes using authentication middleware
 
-## Run it
+## 🛠️ Technologies Used
 
-```bash
-node index.js
+* Node.js
+* Express.js
+* MongoDB Atlas
+* Mongoose
+* dotenv
+
+## 📂 Project Structure
+
+```
+project-root/
+│
+├── controllers/
+│   └── courseController.js
+├── middleware/
+│   └── auth-middleware.js
+├── models/
+│   └── courseModel.js
+├── routes/
+│   └── courseRoute.js
+├── services/
+│   └── courseService.js
+├── index.js
+├── .env
+├── package.json
 ```
 
-If it works, you should see a success message in the terminal and a new `student_report.md` file appear next to `index.js`.
+## ⚙️ Environment Variables
 
-## Modules you will need
+Create a `.env` file in the root directory:
 
-| Module | What it does                            |
-| ------ | --------------------------------------- |
-| `fs`   | Read and write files on your filesystem |
-| `path` | Build file paths that work on any OS    |
-
-Both are built into Node.js — just `require` them, no install needed.
-
-## Key functions
-
-- `fs.readFileSync(filePath, 'utf-8')` — reads a file and returns its contents as a string
-- `fs.writeFileSync(filePath, content, 'utf-8')` — writes a string to a file (creates it if it doesn't exist)
-- `JSON.parse(string)` — converts a JSON string into a JavaScript object
-- `path.join(__dirname, 'filename')` — builds a safe absolute path relative to the current script
-
-## Steps
-
-1. Require the `fs` and `path` modules
-2. Read `students.json` using `fs.readFileSync`
-3. Parse the JSON string into a JavaScript array using `JSON.parse`
-4. Build a Markdown string by looping over the students array
-5. Write the result to `student_report.md` using `fs.writeFileSync`
-
-## Expected output
-
-The generated `student_report.md` should look like this:
-
-```markdown
-# Student Report
-
-Generated on: 20/03/2026
-
-## Summary
-
-Total Students: 3
-
-## Student Details
-
-### Alice Martin
-
-- **Email:** alice.martin@epita.fr
-- **Major:** Computer Science
-- **GPA:** 3.8
-- **ID:** 1
-  ...
+```
+MONGO_URI=your_mongodb_connection_string
+PORT=3000
 ```
 
-## Hints
+## ▶️ Run the Project
 
-- `__dirname` is a Node.js variable that always points to the folder where your script lives — useful for building reliable file paths
-- `Array.forEach()` lets you loop over each student and append their info to your Markdown string
-- Template literals (backticks) make it easy to embed variables inside strings: `` `Hello ${name}` ``
+Install dependencies:
+
+```
+npm install
+```
+
+Start development server:
+
+```
+npm run dev
+```
+
+Server will run on:
+
+```
+http://localhost:3000
+```
+
+---
+
+## 📡 API Endpoints
+
+### Base URL:
+
+```
+http://localhost:3000/api/course
+```
+
+### 🔹 Get all courses
+
+```
+GET /
+```
+
+### 🔹 Get course by ID
+
+```
+GET /:id
+```
+
+### 🔹 Create course
+
+```
+POST /
+```
+
+Body (JSON):
+
+```
+{
+  "title": "Backend Development",
+  "description": "Node.js course",
+  "credits": 3,
+  "instructor": "John Doe"
+}
+```
+
+### 🔹 Update course
+
+```
+PUT /:id
+```
+
+### 🔹 Delete course
+
+```
+DELETE /:id
+```
+
+---
+
+## 🔐 Authentication
+
+All routes are protected by a simple authentication middleware.
+
+Add header in requests:
+
+```
+Authorization: Bearer test123
+```
+
+If the token is missing or incorrect:
+
+```
+401 Unauthorized
+```
+
+---
+
+## ✅ Status Codes
+
+* 200 OK – Successful request
+* 201 Created – Resource created
+* 400 Bad Request – Invalid data
+* 401 Unauthorized – Missing/invalid token
+* 404 Not Found – Resource not found
+
+---
+
+## 📬 Testing
+
+Use Postman to test all endpoints.
+
+---
+
+## 👩‍💻 Author
+Irina Kiseleva
+
+Irina Kiseleva
